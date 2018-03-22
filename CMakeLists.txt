@@ -114,7 +114,7 @@ option(JAS_ENABLE_DANGEROUS_INTERNAL_TESTING_MODE
 #
 ################################################################################
 
-set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD 11 CACHE STRING "C++ standard")
 
 if ((CMAKE_GENERATOR MATCHES Xcode) OR
   (CMAKE_GENERATOR MATCHES "Visual Studio"))
