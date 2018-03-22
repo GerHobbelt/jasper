@@ -98,7 +98,7 @@ option(JAS_ENABLE_PROGRAMS "Enable building of the programs" true)
 ################################################################################
 
 #set(CMAKE_VERBOSE_MAKEFILE on)
-set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD 11 CACHE STRING "C++ standard")
 
 if ((CMAKE_GENERATOR MATCHES Xcode) OR
   (CMAKE_GENERATOR MATCHES "Visual Studio"))
