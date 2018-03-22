@@ -112,13 +112,7 @@ set(libjasper_ras_sources
 	ras/ras_enc.c
 )
 
-if (JAS_ENABLE_SHARED)
-	set(libjasper_type SHARED)
-else()
-	set(libjasper_type STATIC)
-endif()
-
-add_library(libjasper ${libjasper_type}
+add_library(libjasper
 	${libjasper_headers}
 	${libjasper_base_sources}
 	${libjasper_bmp_sources}
@@ -150,7 +144,7 @@ if (UNIX)
 	  VERSION ${JAS_SO_NAME} SOVERSION ${JAS_SO_VERSION})
 endif()
 
-if (JAS_ENABLE_SHARED)
+if (BUILD_SHARED_LIBS)
 	set_target_properties(libjasper PROPERTIES
 	  DEFINE_SYMBOL "JAS_BUILDING_DLL")
 endif()
