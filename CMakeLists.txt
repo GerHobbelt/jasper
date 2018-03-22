@@ -91,7 +91,8 @@ cmake_policy(SET CMP0012 NEW)
 # Define options.
 ################################################################################
 
-option(JAS_ENABLE_SHARED "Enable building of shared library" true)
+#option(JAS_ENABLE_SHARED "Enable building of shared library" true)
+option(BUILD_SHARED_LIBS "Enable building of shared library" true)
 option(JAS_ENABLE_HIDDEN "Hide internal symbols" false)
 option(JAS_ENABLE_32BIT "Use 32 bit integers on 64 bit CPUs" false)
 option(JAS_ENABLE_LIBJPEG "Enable the use of the JPEG Library" true)
@@ -139,11 +140,11 @@ else()
 	set(JAS_REQUIRED "REQUIRED")
 endif()
 
-if (JAS_ENABLE_SHARED AND MACOSX)
+if (BUILD_SHARED_LIBS AND MACOSX)
 	set(CMAKE_MACOSX_RPATH true)
 endif()
 
-if (JAS_ENABLE_SHARED)
+if (BUILD_SHARED_LIBS)
 	set(JAS_DLL 1)
 endif()
 
@@ -303,7 +304,7 @@ add_definitions("-D_GNU_SOURCE")
 #
 ################################################################################
 
-if (JAS_ENABLE_SHARED)
+if (BUILD_SHARED_LIBS)
 
 	# use, i.e. don't skip the full RPATH for the build tree
 	set(CMAKE_SKIP_BUILD_RPATH FALSE)
