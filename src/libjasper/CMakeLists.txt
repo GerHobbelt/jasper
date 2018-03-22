@@ -188,12 +188,14 @@ endif()
 # I am not sure why the following line is needed for building a library, but
 # MacOSX does cannot build a shared library without this line.
 # Also, try adding MATH_LIBRARY to fix a Gentoo problem.
-target_link_libraries(libjasper ${JPEG_LIBRARIES} ${MATH_LIBRARY})
+target_link_libraries(libjasper PUBLIC ${JPEG_LIBRARIES} ${MATH_LIBRARY})
 
 install(TARGETS libjasper
+  EXPORT ${TARGETS_EXPORT_NAME}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+   INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 install(FILES ${libjasper_headers}
   DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/jasper"
