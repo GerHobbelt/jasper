@@ -233,12 +233,7 @@ check_function_exists(getrusage JAS_HAVE_GETRUSAGE)
 # Check for the JPEG library.
 ################################################################################
 
-if(HUNTER_ENABLED)
-  hunter_add_package(Jpeg)
-  find_package(JPEG CONFIG REQUIRED)
-  set(JPEG_LIBRARIES JPEG::jpeg)
-  set(JAS_HAVE_LIBJPEG 1)
-else()
+if(NOT HUNTER_ENABLED)
   find_package(JPEG ${JAS_LIBJPEG_REQUIRED})
 endif()
 
@@ -275,6 +270,14 @@ else()
 	set(JPEG_INCLUDE_DIR "")
 	set(JPEG_LIBRARIES "")
 endif()
+
+if(HUNTER_ENABLED)
+  hunter_add_package(Jpeg)
+  find_package(JPEG CONFIG REQUIRED)
+  set(JPEG_LIBRARIES JPEG::jpeg)
+  set(JAS_HAVE_LIBJPEG 1)
+endif()
+
 message("JAS_HAVE_LIBJPEG: ${JAS_HAVE_LIBJPEG}")
 
 ################################################################################
