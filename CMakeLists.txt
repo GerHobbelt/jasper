@@ -11,6 +11,11 @@ project(jasper LANGUAGES C)
 set(CMAKE_MODULE_PATH
   ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/build/cmake/modules/")
 
+if(MSVC)
+  add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+  add_definitions(-D_CRT_NONSTDC_NO_DEPRECATE)
+endif()
+
 # This include should be placed as early as possible.
 include(InSourceBuild)
 
