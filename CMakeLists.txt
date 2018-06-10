@@ -2,8 +2,8 @@ cmake_minimum_required (VERSION 3.2)
 
 include("cmake/HunterGate.cmake")
 HunterGate(
-    URL "https://github.com/ruslo/hunter/archive/v0.20.24.tar.gz"
-    SHA1 "3e2037a462bcf2ec3440f60298d933e74ffd4df3"
+    URL "https://github.com/ruslo/hunter/archive/v0.22.9.tar.gz"
+    SHA1 "37bc2034f0b58f511fe891c17198b6e4e115483a"
 )
 
 project(jasper LANGUAGES C)
@@ -298,6 +298,11 @@ endif()
 find_library(MATH_LIBRARY m)
 if (NOT MATH_LIBRARY)
 	set(MATH_LIBRARY "")
+endif()
+
+if(MATH_LIBRARY)
+  # Fix relocation: avoid saving full path in install *Config.cmake file
+  set(MATH_LIBRARY m)
 endif()
 
 ################################################################################
