@@ -2,8 +2,8 @@ cmake_minimum_required (VERSION 3.2)
 
 include("cmake/HunterGate.cmake")
 HunterGate(
-    URL "https://github.com/ruslo/hunter/archive/v0.22.9.tar.gz"
-    SHA1 "37bc2034f0b58f511fe891c17198b6e4e115483a"
+    URL "https://github.com/cpp-pm/hunter/archive/v0.23.293.tar.gz"
+    SHA1 "e8e5470652db77149d9b38656db2a6c0b7642693"
 )
 
 project(jasper LANGUAGES C)
@@ -97,7 +97,7 @@ cmake_policy(SET CMP0012 NEW)
 ################################################################################
 
 #option(JAS_ENABLE_SHARED "Enable building of shared library" true)
-option(BUILD_SHARED_LIBS "Enable building of shared library" true)
+option(BUILD_SHARED_LIBS "Enable building of shared library" false)
 option(JAS_ENABLE_HIDDEN "Hide internal symbols" false)
 option(JAS_ENABLE_32BIT "Use 32 bit integers on 64 bit CPUs" false)
 option(JAS_ENABLE_LIBJPEG "Enable the use of the JPEG Library" true)
