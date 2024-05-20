@@ -1,4 +1,6 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.20)
+# Version 3.20 needed for cmake_path.
+# Version 3.19 needed for file(REAL_PATH ...).
 # Version 3.12 needed for FindJPEG imported targets.
 # Version 3.10 needed for FindOpenGL imported targets.
 # Version 3.1 needed for FindGLUT imported targets.
@@ -197,6 +199,7 @@ if(JAS_WASM)
 	set(JAS_STDC_VERSION "201112L")
 	set(JAS_ENABLE_MULTITHREADING_SUPPORT 0)
 	set(JAS_ENABLE_SHARED 0)
+	set(JAS_USE_JAS_INIT 0)
 	add_compile_definitions(JAS_WASI_LIBC)
 endif()
 
