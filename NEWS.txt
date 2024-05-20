@@ -1,7 +1,13 @@
+4.2.4 (2024-04-27)
+==================
+
+* Added some missing checks to the jas_heic_decode function in the
+  HEIC codec (#383).
+
 4.2.3 (2024-03-30)
 ==================
 
-* Added a missing check in the JPC codec (#381).
+* Added a missing check in the JPC codec (#381) (CVE-2024-31744).
 
 4.2.2 (2024-03-11)
 ==================
