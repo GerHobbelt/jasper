@@ -114,15 +114,15 @@ typedef enum {
 *
 \******************************************************************************/
 
-double getdistortion(jas_matrix_t *orig, jas_matrix_t *recon, int depth, int metric);
-double pae(jas_matrix_t *x, jas_matrix_t *y);
-double msen(jas_matrix_t *x, jas_matrix_t *y, int n);
-double psnr(jas_matrix_t *x, jas_matrix_t *y, int depth);
-jas_image_t *makediffimage(jas_matrix_t *origdata, jas_matrix_t *recondata);
-void usage(void);
-void cmdinfo(void);
-size_t get_default_max_mem_usage(void);
-void cleanup(void);
+static double getdistortion(jas_matrix_t *orig, jas_matrix_t *recon, int depth, int metric);
+static double pae(jas_matrix_t *x, jas_matrix_t *y);
+static double msen(jas_matrix_t *x, jas_matrix_t *y, int n);
+static double psnr(jas_matrix_t *x, jas_matrix_t *y, int depth);
+static jas_image_t *makediffimage(jas_matrix_t *origdata, jas_matrix_t *recondata);
+static void usage(void);
+static void cmdinfo(void);
+static size_t get_default_max_mem_usage(void);
+static void cleanup(void);
 
 /******************************************************************************\
 *
@@ -518,7 +518,7 @@ cleanup:
 * Distortion metric computation functions.
 \******************************************************************************/
 
-double getdistortion(jas_matrix_t *orig, jas_matrix_t *recon, int depth, int metric)
+static double getdistortion(jas_matrix_t *orig, jas_matrix_t *recon, int depth, int metric)
 {
 	double d;
 
@@ -548,7 +548,7 @@ double getdistortion(jas_matrix_t *orig, jas_matrix_t *recon, int depth, int met
 
 /* Compute peak absolute error. */
 
-double pae(jas_matrix_t *x, jas_matrix_t *y)
+static double pae(jas_matrix_t *x, jas_matrix_t *y)
 {
 	double s;
 	double d;
@@ -568,7 +568,7 @@ double pae(jas_matrix_t *x, jas_matrix_t *y)
 
 /* Compute either mean-squared error or mean-absolute error. */
 
-double msen(jas_matrix_t *x, jas_matrix_t *y, int n)
+static double msen(jas_matrix_t *x, jas_matrix_t *y, int n)
 {
 	double s;
 	double d;
@@ -592,7 +592,7 @@ double msen(jas_matrix_t *x, jas_matrix_t *y, int n)
 
 /* Compute peak signal-to-noise ratio. */
 
-double psnr(jas_matrix_t *x, jas_matrix_t *y, int depth)
+static double psnr(jas_matrix_t *x, jas_matrix_t *y, int depth)
 {
 	double mse;
 	double rmse;
@@ -607,7 +607,7 @@ double psnr(jas_matrix_t *x, jas_matrix_t *y, int depth)
 *
 \******************************************************************************/
 
-jas_image_t *makediffimage(jas_matrix_t *origdata, jas_matrix_t *recondata)
+static jas_image_t *makediffimage(jas_matrix_t *origdata, jas_matrix_t *recondata)
 {
 	jas_image_t *diffimage;
 	jas_matrix_t *diffdata[3];
@@ -682,7 +682,7 @@ error:
 *
 \******************************************************************************/
 
-void cmdinfo()
+static void cmdinfo(void)
 {
 	fprintf(stderr, "Image Comparison Utility (Version %s).\n",
 	  JAS_VERSION);
@@ -692,7 +692,7 @@ void cmdinfo()
 	  );
 }
 
-void usage()
+static void usage(void)
 {
 	static const char helpinfo[] = {
 		"Some of the supported options include:\n"
@@ -722,7 +722,7 @@ void usage()
 	exit(EXIT_USAGE);
 }
 
-size_t get_default_max_mem_usage(void)
+static size_t get_default_max_mem_usage(void)
 {
 	size_t total_mem_size = jas_get_total_mem_size();
 	size_t max_mem;
@@ -734,7 +734,7 @@ size_t get_default_max_mem_usage(void)
 	return max_mem;
 }
 
-void cleanup(void)
+static void cleanup(void)
 {
 #if defined(JAS_USE_JAS_INIT)
 	jas_cleanup();

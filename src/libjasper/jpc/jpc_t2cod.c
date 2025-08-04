@@ -626,7 +626,7 @@ void jpc_pi_destroy(jpc_pi_t *pi)
 	jas_free(pi);
 }
 
-jpc_pi_t *jpc_pi_create0()
+jpc_pi_t *jpc_pi_create0(void)
 {
 	jpc_pi_t *pi;
 	if (!(pi = jas_malloc(sizeof(jpc_pi_t)))) {
@@ -703,7 +703,7 @@ void jpc_pi_dump(const jpc_pi_t *pi)
 *
 \******************************************************************************/
 
-jpc_pchglist_t *jpc_pchglist_create()
+jpc_pchglist_t *jpc_pchglist_create(void)
 {
 	jpc_pchglist_t *pchglist;
 	if (!(pchglist = jas_malloc(sizeof(jpc_pchglist_t)))) {

@@ -63,7 +63,7 @@
 
 #include "jasper/jas_version.h"
 
-const char *jas_getversion()
+const char *jas_getversion(void)
 {
 	return JAS_VERSION;
 }

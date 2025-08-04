@@ -81,7 +81,7 @@
 * Constructors and destructors.
 \******************************************************************************/
 
-bmp_info_t *bmp_info_create()
+bmp_info_t *bmp_info_create(void)
 {
 	bmp_info_t *info;
 	if (!(info = jas_malloc(sizeof(bmp_info_t)))) {

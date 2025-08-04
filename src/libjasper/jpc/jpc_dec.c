@@ -2253,7 +2253,7 @@ void jpc_seglist_remove(jpc_dec_seglist_t *list, jpc_dec_seg_t *seg)
 	seg->next = 0;
 }
 
-jpc_dec_seg_t *jpc_seg_alloc()
+jpc_dec_seg_t *jpc_seg_alloc(void)
 {
 	jpc_dec_seg_t *seg;
 
@@ -2358,7 +2358,7 @@ static int jpc_dec_dump(const jpc_dec_t *dec)
 	return 0;
 }
 
-static jpc_streamlist_t *jpc_streamlist_create()
+static jpc_streamlist_t *jpc_streamlist_create(void)
 {
 	jpc_streamlist_t *streamlist;
 
@@ -2434,7 +2434,7 @@ static int jpc_streamlist_numstreams(jpc_streamlist_t *streamlist)
 	return streamlist->numstreams;
 }
 
-static jpc_ppxstab_t *jpc_ppxstab_create()
+static jpc_ppxstab_t *jpc_ppxstab_create(void)
 {
 	jpc_ppxstab_t *tab;
 
@@ -2586,7 +2586,7 @@ static int jpc_pptstabwrite(jas_stream_t *out, jpc_ppxstab_t *tab)
 	return 0;
 }
 
-static jpc_ppxstabent_t *jpc_ppxstabent_create()
+static jpc_ppxstabent_t *jpc_ppxstabent_create(void)
 {
 	jpc_ppxstabent_t *ent;
 	if (!(ent = jas_malloc(sizeof(jpc_ppxstabent_t)))) {

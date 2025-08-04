@@ -231,7 +231,7 @@ bool JPC_ISTERMINATED(unsigned passno, unsigned firstpassno, unsigned numpasses,
 * Lookup table code.
 \******************************************************************************/
 
-void jpc_initluts()
+void jpc_initluts(void)
 {
 	float u;
 	float v;
@@ -466,7 +466,7 @@ static void jpc_initctxs(jpc_mqctx_t *ctxs)
 	}
 }
 
-void jpc_initmqctxs()
+void jpc_initmqctxs(void)
 {
 	jpc_initctxs(jpc_mqctxs);
 }

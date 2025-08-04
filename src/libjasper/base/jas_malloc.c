@@ -367,7 +367,7 @@ void jas_set_max_mem_usage(size_t max_mem)
 #endif
 }
 
-size_t jas_get_mem_usage()
+size_t jas_get_mem_usage(void)
 {
 	assert(jas_allocator == JAS_CAST(jas_allocator_t*, &jas_basic_allocator));
 	jas_basic_allocator_t *allocator = JAS_CAST(jas_basic_allocator_t *,
@@ -624,7 +624,7 @@ void jas_basic_free(jas_allocator_t *allocator, void *ptr)
 /******************************************************************************\
 \******************************************************************************/
 
-size_t jas_get_total_mem_size()
+size_t jas_get_total_mem_size(void)
 {
 #if defined(JAS_WASI_LIBC)
 	/*

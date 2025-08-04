@@ -394,7 +394,7 @@ _Thread_local jas_ctx_t *jas_default_ctx = 0;
 \******************************************************************************/
 
 JAS_EXPORT
-void jas_conf_clear()
+void jas_conf_clear(void)
 {
 	jas_conf.multithread = 0;
 	jas_conf.allocator = 0;
@@ -472,7 +472,7 @@ the mutex ensures synchronization and also guarantees that only one
 thread can use the global context at once.
 */
 JAS_EXPORT
-int jas_init_library()
+int jas_init_library(void)
 {
 	int ret = 0;
 	int status;
@@ -633,7 +633,7 @@ done:
 }
 
 JAS_EXPORT
-int jas_cleanup_library()
+int jas_cleanup_library(void)
 {
 	jas_ctx_t *ctx;
 #if defined(JAS_THREADS)
@@ -693,7 +693,7 @@ int jas_cleanup_library()
 \******************************************************************************/
 
 JAS_EXPORT
-int jas_init_thread()
+int jas_init_thread(void)
 {
 	int ret = 0;
 	jas_ctx_t *ctx = 0;
@@ -754,7 +754,7 @@ done:
 }
 
 JAS_EXPORT
-int jas_cleanup_thread()
+int jas_cleanup_thread(void)
 {
 	jas_ctx_t *ctx;
 #if defined(JAS_THREADS)
@@ -804,7 +804,7 @@ int jas_cleanup_thread()
 \******************************************************************************/
 
 JAS_EXPORT
-int jas_init()
+int jas_init(void)
 {
 	jas_deprecated("use of jas_init is deprecated\n");
 	jas_conf_clear();
@@ -819,7 +819,7 @@ int jas_init()
 }
 
 JAS_EXPORT
-void jas_cleanup()
+void jas_cleanup(void)
 {
 	jas_deprecated("use of jas_cleanup is deprecated\n");
 	if (jas_cleanup_thread()) {
@@ -870,7 +870,7 @@ void jas_ctx_init(jas_ctx_t *ctx)
 	memset(ctx->image_fmtinfos, 0, sizeof(ctx->image_fmtinfos));
 }
 
-jas_ctx_t *jas_ctx_create()
+jas_ctx_t *jas_ctx_create(void)
 {
 	jas_ctx_t *ctx;
 	if (!(ctx = jas_malloc(sizeof(jas_ctx_t)))) {
@@ -882,7 +882,7 @@ jas_ctx_t *jas_ctx_create()
 }
 
 JAS_EXPORT
-jas_context_t jas_context_create()
+jas_context_t jas_context_create(void)
 {
 	return JAS_CAST(jas_context_t, jas_ctx_create());
 }
@@ -904,7 +904,7 @@ void jas_context_destroy(jas_context_t context)
 	jas_ctx_destroy(JAS_CAST(jas_ctx_t *, context));
 }
 
-jas_ctx_t *jas_get_ctx_internal()
+jas_ctx_t *jas_get_ctx_internal(void)
 {
 #if defined(JAS_THREADS)
 	jas_ctx_t *ctx;
@@ -924,13 +924,13 @@ jas_ctx_t *jas_get_ctx_internal()
 }
 
 JAS_EXPORT
-jas_context_t jas_get_context()
+jas_context_t jas_get_context(void)
 {
 	return JAS_CAST(jas_context_t, jas_get_ctx());
 }
 
 JAS_EXPORT
-jas_context_t jas_get_default_context()
+jas_context_t jas_get_default_context(void)
 {
 	return JAS_CAST(jas_context_t, jas_get_default_ctx());
 }
@@ -957,7 +957,7 @@ void jas_set_ctx(jas_ctx_t *ctx)
 #endif
 }
 
-jas_ctx_t *jas_get_default_ctx()
+jas_ctx_t *jas_get_default_ctx(void)
 {
 	jas_ctx_t *ctx;
 

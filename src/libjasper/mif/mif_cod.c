@@ -729,7 +729,7 @@ static int mif_hdr_addcmpt(mif_hdr_t *hdr, int cmptno, mif_cmpt_t *cmpt)
 * Code for MIF component class.
 \******************************************************************************/
 
-static mif_cmpt_t *mif_cmpt_create()
+static mif_cmpt_t *mif_cmpt_create(void)
 {
 	JAS_LOGDEBUGF(10, "mif_cmpt_create()\n");
 	mif_cmpt_t *cmpt;

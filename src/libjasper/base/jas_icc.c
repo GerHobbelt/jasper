@@ -267,7 +267,7 @@ static const jas_iccattrvalinfo_t jas_iccattrvalinfos[] = {
 * profile class
 \******************************************************************************/
 
-static jas_iccprof_t *jas_iccprof_create()
+static jas_iccprof_t *jas_iccprof_create(void)
 {
 	jas_iccprof_t *prof;
 	prof = 0;
@@ -755,7 +755,7 @@ static int jas_iccputxyz(jas_stream_t *out, const jas_iccxyz_t *xyz)
 * attribute table class
 \******************************************************************************/
 
-static jas_iccattrtab_t *jas_iccattrtab_create()
+static jas_iccattrtab_t *jas_iccattrtab_create(void)
 {
 	jas_iccattrtab_t *tab;
 	tab = 0;
@@ -1013,7 +1013,7 @@ error:
 	return -1;
 }
 
-static jas_iccattrval_t *jas_iccattrval_create0()
+static jas_iccattrval_t *jas_iccattrval_create0(void)
 {
 	jas_iccattrval_t *attrval;
 	if (!(attrval = jas_malloc(sizeof(jas_iccattrval_t)))) {

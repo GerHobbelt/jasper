@@ -198,7 +198,7 @@ error:
 	return 0;
 }
 
-jas_image_t *jas_image_create0()
+jas_image_t *jas_image_create0(void)
 {
 	jas_image_t *image;
 
@@ -255,7 +255,7 @@ error:
 	return 0;
 }
 
-static jas_image_cmpt_t *jas_image_cmpt_create0()
+static jas_image_cmpt_t *jas_image_cmpt_create0(void)
 {
 	jas_image_cmpt_t *cmpt;
 	if (!(cmpt = jas_malloc(sizeof(jas_image_cmpt_t)))) {
@@ -534,7 +534,7 @@ int jas_image_readcmpt(jas_image_t *image, unsigned cmptno, jas_image_coord_t x,
 	const uint_least32_t drs = jas_matrix_rowstep(data);
 
 #ifdef _MSC_VER
-	jas_uchar *stack_buffer;
+	jas_uchar *stack_buffer = NULL; // warning C4703 : potentially uninitialized local pointer variable 'stack_buffer' used
 	if (cps == 1 && !sgnd && width <= 16384) {
 		/* can't use variable-length arrays here because MSVC
 		   doesn't support this C99 feature */
@@ -629,7 +629,7 @@ int jas_image_writecmpt(jas_image_t *image, unsigned cmptno,
 	const uint_least32_t drs = jas_matrix_rowstep(data);
 
 #ifdef _MSC_VER
-	jas_uchar *stack_buffer;
+	jas_uchar *stack_buffer = NULL;
 	if (cps == 1 && !sgnd && width <= 16384) {
 		/* can't use variable-length arrays here because MSVC
 		   doesn't support this C99 feature */
@@ -752,7 +752,7 @@ void jas_image_clearfmts_internal(jas_image_fmtinfo_t *image_fmtinfos,
 	*image_numfmts = 0;
 }
 
-void jas_image_clearfmts()
+void jas_image_clearfmts(void)
 {
 	jas_ctx_t *ctx = jas_get_ctx();
 	jas_image_clearfmts_internal(ctx->image_fmtinfos, &ctx->image_numfmts);

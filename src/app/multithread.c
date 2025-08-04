@@ -124,7 +124,7 @@ int process_job(void *job_handle);
 size_t get_default_max_mem_usage(void);
 void cleanup(void);
 
-void usage()
+void usage(void)
 {
 	fprintf(stderr, "bad usage\n");
 	exit(1);

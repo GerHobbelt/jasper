@@ -203,7 +203,7 @@ error:
 	return 0;
 }
 
-static jas_cmprof_t *jas_cmprof_createsycc()
+static jas_cmprof_t *jas_cmprof_createsycc(void)
 {
 	JAS_LOGDEBUGF(1, "jas_cmprof_createsycc()\n");
 
@@ -376,7 +376,7 @@ error:
 	return 0;
 }
 
-static jas_cmprof_t *jas_cmprof_create()
+static jas_cmprof_t *jas_cmprof_create(void)
 {
 	jas_cmprof_t *prof;
 	if (!(prof = jas_malloc(sizeof(jas_cmprof_t)))) {
@@ -670,7 +670,7 @@ void jas_cmxform_destroy(jas_cmxform_t *xform)
 * Primitive transform sequence class.
 \******************************************************************************/
 
-static jas_cmpxformseq_t *jas_cmpxformseq_create()
+static jas_cmpxformseq_t *jas_cmpxformseq_create(void)
 {
 	jas_cmpxformseq_t *pxformseq;
 	pxformseq = 0;
@@ -815,7 +815,7 @@ static int jas_cmpxformseq_resize(jas_cmpxformseq_t *pxformseq, unsigned n)
 * Primitive transform class.
 \******************************************************************************/
 
-static jas_cmpxform_t *jas_cmpxform_create0()
+static jas_cmpxform_t *jas_cmpxform_create0(void)
 {
 	jas_cmpxform_t *pxform;
 	if (!(pxform = jas_malloc(sizeof(jas_cmpxform_t)))) {
@@ -845,7 +845,7 @@ static jas_cmpxform_t *jas_cmpxform_copy(jas_cmpxform_t *pxform)
 * Shaper matrix class.
 \******************************************************************************/
 
-static jas_cmpxform_t *jas_cmpxform_createshapmat()
+static jas_cmpxform_t *jas_cmpxform_createshapmat(void)
 {
 	jas_cmpxform_t *pxform;
 	jas_cmshapmat_t *shapmat;

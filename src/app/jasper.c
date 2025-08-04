@@ -583,7 +583,7 @@ int addopt(char *optstr, int maxlen, const char *s)
 	return 0;
 }
 
-void cmdinfo()
+void cmdinfo(void)
 {
 	fprintf(stderr, "JasPer Transcoder (Version %s).\n",
 	  JAS_VERSION);
@@ -612,7 +612,7 @@ static const char *const helpinfo[] = {
 0
 };
 
-void cmdusage()
+void cmdusage(void)
 {
 	const char *s;
 	int i;
@@ -639,7 +639,7 @@ void cmdusage()
 	exit(EXIT_FAILURE);
 }
 
-void badusage()
+void badusage(void)
 {
 	fprintf(stderr,
 	  "For more information on how to use this command, type:\n");

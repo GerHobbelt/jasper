@@ -369,7 +369,7 @@ int main(int argc, char **argv)
 *
 \******************************************************************************/
 
-static void cmdinfo()
+static void cmdinfo(void)
 {
 	fprintf(stderr, "Image Information Utility (Version %s).\n",
 	  JAS_VERSION);
@@ -379,7 +379,7 @@ static void cmdinfo()
 	  );
 }
 
-static void usage()
+static void usage(void)
 {
 	static const char help[] = {
 		"Some supported options include:\n"
@@ -424,7 +424,7 @@ size_t get_default_max_mem_usage(void)
 	return max_mem;
 }
 
-void cleanup()
+void cleanup(void)
 {
 #if defined(JAS_USE_JAS_INIT)
 	jas_cleanup();
