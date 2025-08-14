@@ -87,6 +87,9 @@
 #define	BIGZOOMAMOUNT	2.0
 #define	SMALLZOOMAMOUNT	1.41421356237310
 
+#undef min
+#undef max
+
 #define	min(x, y)	(((x) < (y)) ? (x) : (y))
 #define	max(x, y)	(((x) > (y)) ? (x) : (y))
 
@@ -368,7 +371,7 @@ int main(int argc, char **argv)
 *
 \******************************************************************************/
 
-static void cmdinfo()
+static void cmdinfo(void)
 {
 	fprintf(stderr, "JasPer Image Viewer (Version %s).\n",
 	  JAS_VERSION);
@@ -388,7 +391,7 @@ static const char *const helpinfo[] = {
 0
 };
 
-static void usage()
+static void usage(void)
 {
 	const char *s;
 	int i;
@@ -406,7 +409,7 @@ static void usage()
 
 /* Display callback function. */
 
-static void displayfunc()
+static void displayfunc(void)
 {
 	float w;
 	float h;
@@ -685,7 +688,7 @@ static void panzoom(float dx, float dy, float sx, float sy)
 	}
 }
 
-static void nextcmpt()
+static void nextcmpt(void)
 {
 	if (gs.monomode) {
 		if (gs.cmptno == jas_image_numcmpts(gs.image) - 1) {
@@ -705,7 +708,7 @@ static void nextcmpt()
 	glutPostRedisplay();
 }
 
-static void prevcmpt()
+static void prevcmpt(void)
 {
 	if (gs.monomode) {
 		if (!gs.cmptno) {
@@ -721,7 +724,7 @@ static void prevcmpt()
 	glutPostRedisplay();
 }
 
-static void nextimage()
+static void nextimage(void)
 {
 	int n;
 	unloadimage();
@@ -742,7 +745,7 @@ static void nextimage()
 	cleanupandexit(EXIT_SUCCESS);
 }
 
-static void previmage()
+static void previmage(void)
 {
 	int n;
 	unloadimage();
@@ -762,7 +765,7 @@ static void previmage()
 	cleanupandexit(EXIT_SUCCESS);
 }
 
-static int loadimage()
+static int loadimage(void)
 {
 	jas_stream_t *in;
 	int vh;
@@ -882,7 +885,7 @@ static int loadimage()
 	return -1;
 }
 
-static void unloadimage()
+static void unloadimage(void)
 {
 	if (gs.image) {
 		jas_image_destroy(gs.image);
@@ -910,7 +913,7 @@ static int pixmap_resize(pixmap_t *p, int w, int h)
 	return 0;
 }
 
-static void dumpstate()
+static void dumpstate(void)
 {
 	printf("blx=%f bly=%f trx=%f try=%f\n", gs.botleftx, gs.botlefty, gs.toprightx, gs.toprighty);
 }
@@ -1023,7 +1026,7 @@ error:
 }
 
 
-static void render()
+static void render(void)
 {
 	float vtlx;
 	float vtly;
@@ -1148,7 +1151,7 @@ static void cleanupandexit(int status)
 	exit(status);
 }
 
-static void init()
+static void init(void)
 {
 	gs.filenum = -1;
 	gs.image = 0;

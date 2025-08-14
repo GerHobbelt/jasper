@@ -177,7 +177,7 @@ static const jas_stream_ops_t jas_stream_memops = {
 * Code for opening and closing streams.
 \******************************************************************************/
 
-static jas_stream_t *jas_stream_create()
+static jas_stream_t *jas_stream_create(void)
 {
 	jas_stream_t *stream;
 
@@ -470,7 +470,7 @@ static int easy_mkstemp(char *buffer, size_t size)
 #endif
 }
 
-jas_stream_t *jas_stream_tmpfile()
+jas_stream_t *jas_stream_tmpfile(void)
 {
 	jas_stream_t *stream;
 	jas_stream_fileobj_t *obj;
