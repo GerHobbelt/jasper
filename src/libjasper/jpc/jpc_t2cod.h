@@ -247,19 +247,19 @@ int jpc_pi_next(jpc_pi_t *pi);
 #define	jpc_pi_getind(pi)	((pi)->pktno)
 
 /* Get the component number of the current packet. */
-#define jpc_pi_cmptno(pi)	(assert(pi->valid), (pi)->compno)
+#define jpc_pi_cmptno(pi)	(assert_expression(pi->valid), (pi)->compno)
 
 /* Get the resolution level of the current packet. */
-#define jpc_pi_rlvlno(pi)	(assert(pi->valid), (pi)->rlvlno)
+#define jpc_pi_rlvlno(pi)	(assert_expression(pi->valid), (pi)->rlvlno)
 
 /* Get the layer number of the current packet. */
-#define jpc_pi_lyrno(pi)	(assert(pi->valid), (pi)->lyrno)
+#define jpc_pi_lyrno(pi)	(assert_expression(pi->valid), (pi)->lyrno)
 
 /* Get the precinct number of the current packet. */
-#define jpc_pi_prcno(pi)	(assert(pi->valid), (pi)->prcno)
+#define jpc_pi_prcno(pi)	(assert_expression(pi->valid), (pi)->prcno)
 
 /* Get the progression order for the current packet. */
-#define jpc_pi_prg(pi)	(assert(pi->valid), (pi)->pchg->prgord)
+#define jpc_pi_prg(pi)	(assert_expression(pi->valid), (pi)->pchg->prgord)
 
 /******************************************************************************\
 * Functions/macros for progression change lists.
