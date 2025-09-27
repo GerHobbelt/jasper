@@ -100,7 +100,7 @@
 * Coding parameters types.
 \******************************************************************************/
 
-/* Per-component coding paramters. */
+/* Per-component coding parameters. */
 
 typedef struct {
 
