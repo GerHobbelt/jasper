@@ -75,7 +75,6 @@
 \******************************************************************************/
 
 #include "jasper/jas_seq.h"
-
 #include "jpc_fix.h"
 #include "jpc_qmfb.h"
 
@@ -130,10 +129,10 @@ int jpc_tsfb_analyze(jpc_tsfb_t *tsfb, jas_seq2d_t *x);
 /* Perform synthesis. */
 int jpc_tsfb_synthesize(jpc_tsfb_t *tsfb, jas_seq2d_t *x);
 
-int jpc_tsfb_analyze2(jpc_tsfb_t *tsfb, int *a, int xstart, int ystart,
+int jpc_tsfb_analyze2(jpc_tsfb_t *tsfb, jpc_fix_t *a, int xstart, int ystart,
   int width, int height, int stride, int numlvls);
 
-int jpc_tsfb_synthesize2(jpc_tsfb_t *tsfb, int *a, int xstart, int ystart,
+int jpc_tsfb_synthesize2(jpc_tsfb_t *tsfb, jpc_fix_t *a, int xstart, int ystart,
   int width, int height, int stride, int numlvls);
 
 /* Get band information for a TSFB. */

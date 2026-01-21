@@ -167,20 +167,26 @@ endif()
 # strip off the "lib" prefix, since it's already libjasper
 set_target_properties(${lib_name} PROPERTIES PREFIX "")
 #######################################
-set(lib ${lib_name})
-if(DEFINED XP_NAMESPACE)
-  set(nameSpace NAMESPACE ${XP_NAMESPACE}::)
-  string(PREPEND lib "${XP_NAMESPACE}::")
-endif()
-if(NOT DEFINED XP_INSTALL_CMAKEDIR)
-  set(XP_INSTALL_CMAKEDIR ${CMAKE_INSTALL_DATADIR}/cmake)
-endif()
 set(targetsFile ${PROJECT_NAME}-targets)
-xpPackageDevel(TARGETS_FILE ${targetsFile} LIBRARIES ${lib})
+if(DEFINED XP_NAMESPACE)
+  file(STRINGS ${jasper_SOURCE_DIR}/jasper.spec PKG_VERSION REGEX "^%define[\t ]+ver[ \t]+([0-9]+)\\.([0-9]+)\\.([0-9]+)?")
+  string(REGEX REPLACE "^%define[\t ]+ver([ \t]+)" "" PKG_VERSION ${PKG_VERSION})
+  xpExternPackage(NAMESPACE ${XP_NAMESPACE}
+    TARGETS_FILE ${targetsFile} LIBRARIES ${lib_name}
+    BASE version-${PKG_VERSION} XPDIFF "auto"
+    WEB "https://jasper-software.github.io/jasper/" UPSTREAM "github.com/jasper-software/jasper"
+    DESC "JasPer is a software toolkit for the handling of image data. It was initially developed as a reference implementation of the JPEG 2000 Part-1 codec."
+    LICENSE "[JasPer-2.0](https://github.com/jasper-software/jasper/blob/master/LICENSE.txt 'JasPer software license based on MIT License')"
+    )
+  set(nameSpace NAMESPACE ${XP_NAMESPACE}::)
+  set(CMAKE_INSTALL_CMAKEDIR ${XP_INSTALL_CMAKEDIR})
+elseif(NOT DEFINED CMAKE_INSTALL_CMAKEDIR)
+  set(CMAKE_INSTALL_CMAKEDIR ${CMAKE_INSTALL_DATADIR}/cmake)
+endif()
 install(TARGETS ${lib_name} EXPORT ${targetsFile}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   )
 install(FILES ${include_srcs} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
-install(EXPORT ${targetsFile} DESTINATION ${XP_INSTALL_CMAKEDIR} ${nameSpace})
+install(EXPORT ${targetsFile} DESTINATION ${CMAKE_INSTALL_CMAKEDIR} ${nameSpace})
