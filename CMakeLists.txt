@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.31)
 set(CMAKE_PROJECT_TOP_LEVEL_INCLUDES .devcontainer/cmake/xproinc.cmake)
 project(jasper)
-include(GNUInstallDirs)
-include(xpflags)
 include(configure.cmake)
 add_subdirectory(src/libjasper)
 add_subdirectory(src/appl)
