@@ -179,7 +179,6 @@ if(DEFINED XP_NAMESPACE)
     LICENSE "[JasPer-2.0](https://github.com/jasper-software/jasper/blob/master/LICENSE.txt 'JasPer software license based on MIT License')"
     )
   set(nameSpace NAMESPACE ${XP_NAMESPACE}::)
-  set(CMAKE_INSTALL_CMAKEDIR ${XP_INSTALL_CMAKEDIR})
 elseif(NOT DEFINED CMAKE_INSTALL_CMAKEDIR)
   set(CMAKE_INSTALL_CMAKEDIR ${CMAKE_INSTALL_DATADIR}/cmake)
 endif()
